@@ -6,6 +6,8 @@ import CustomUnderline from "@/components/ui/CustomUnderline";
 import PersonalCard from "@/components/ui/PersonalCard";
 import FloatingButton from "@/components/ui/FloatingButton";
 import { Crimson_Pro } from "next/font/google";
+
+// IMG //
 import headerImg from "../assets/imgs/header_01.jpg";
 
 // SVG //
@@ -34,11 +36,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Home() {
-  const skillRef = useRef(null);
+  const skillFrontRef = useRef(null);
+  const skillBackRef = useRef(null);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to(skillRef.current, {
+    gsap.to(skillFrontRef.current, {
       x: 0,
 
       scrollTrigger: {
@@ -52,6 +55,25 @@ export default function Home() {
 
     return () => {
       gsap.killTweensOf(".skill-front");
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(skillBackRef.current, {
+      x: 0,
+
+      scrollTrigger: {
+        trigger: ".skill-back",
+        markers: true,
+        start: "top 700px",
+        end: "bottom 650px",
+        scrub: true,
+      },
+    });
+
+    return () => {
+      gsap.killTweensOf(".skill-back");
     };
   }, []);
 
@@ -144,7 +166,7 @@ export default function Home() {
             </p>
             <div className="  w-2/3">
               <ul
-                ref={skillRef}
+                ref={skillFrontRef}
                 className=" skill-front -translate-x-[500px] flex justify-between gap-2 [&>*]:transition-all duration-300 delay-75 [&>*:hover]:rotate-12"
               >
                 <li>
@@ -182,7 +204,10 @@ export default function Home() {
               MongoDB, Prisma, among others.
             </p>
             <div className="w-2/3">
-              <ul className="flex justify-between gap-2 [&>*]:transition-all duration-300 delay-75 [&>*:hover]:rotate-12">
+              <ul
+                ref={skillBackRef}
+                className="skill-back translate-x-[500px] flex justify-between gap-2 [&>*]:transition-all duration-300 delay-75 [&>*:hover]:rotate-12"
+              >
                 <li>
                   <Image src={pythonSvg} alt="js" />
                 </li>
