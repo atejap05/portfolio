@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import CustomUnderline from "@/components/ui/CustomUnderline";
 import PersonalCard from "@/components/ui/PersonalCard";
@@ -5,17 +8,18 @@ import FloatingButton from "@/components/ui/FloatingButton";
 import { Crimson_Pro } from "next/font/google";
 import headerImg from "../assets/imgs/header_01.jpg";
 
-// SVG
-
+// SVG //
+// Front
 import typescriptSvg from "../assets/svg/icons8-typescript.svg";
 import nextjsSvg from "../assets/svg/icons8-nextjs.svg";
 import tailwindSvg from "../assets/svg/icons8-tailwindcss.svg";
 import sassSvg from "../assets/svg/icons8-sass.svg";
 import reactSvg from "../assets/svg/icons8-react.svg";
+
 import cssSvg from "../assets/svg/icons8-css.svg";
 import htmlSvg from "../assets/svg/icons8-html.svg";
 import jsSvg from "../assets/svg/icons8-javascript.svg";
-
+// Back
 import nodeSvg from "../assets/svg/icons8-nodejs.svg";
 import expressSvg from "../assets/svg/icons8-express-js.svg";
 import postgresSvg from "../assets/svg/icons8-postgresql.svg";
@@ -25,7 +29,32 @@ import pythonSvg from "../assets/svg/icons8-python.svg";
 
 const crimsonPro = Crimson_Pro({ subsets: ["latin"] });
 
+// Gsap
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 export default function Home() {
+  const skillRef = useRef(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(skillRef.current, {
+      x: 0,
+
+      scrollTrigger: {
+        trigger: ".skill-front",
+        markers: true,
+        start: "top 700px",
+        end: "bottom 650px",
+        scrub: true,
+      },
+    });
+
+    return () => {
+      gsap.killTweensOf(".skill-front");
+    };
+  }, []);
+
   return (
     <div className="max-w-screen-xl min-h-screen py-2 px-4 m-auto">
       <section className="bg-gradient-to-t from-my-dark to-my-black shadow-md flex justify-between gap-2 px-8 pb-24 clip-path-mypolygon_b">
@@ -113,8 +142,11 @@ export default function Home() {
               NextJs, TypeScript, Tailwind CSS, Sass, Styled Components, among
               others.
             </p>
-            <div className="w-2/3">
-              <ul className="flex justify-between gap-2 [&>*]:transition-all duration-300 delay-75 [&>*:hover]:rotate-12">
+            <div className="  w-2/3">
+              <ul
+                ref={skillRef}
+                className=" skill-front -translate-x-[500px] flex justify-between gap-2 [&>*]:transition-all duration-300 delay-75 [&>*:hover]:rotate-12"
+              >
                 <li>
                   <Image src={jsSvg} alt="js" />
                 </li>
