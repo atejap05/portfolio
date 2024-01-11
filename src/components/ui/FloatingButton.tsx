@@ -1,8 +1,39 @@
+import { animateScroll as scroll } from "react-scroll";
+import { useIsomorphicLayoutEffect } from "@/utils/effectHook";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const FloatingButton = () => {
   // floating button back to top
+
+  useIsomorphicLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(".floating-btn", {
+      display: "block",
+
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top 800px",
+        end: "bottom 650px",
+        scrub: true,
+      },
+    });
+
+    return () => {
+      gsap.killTweensOf(".floating-btn");
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
   return (
-    <div className="fixed bottom-14 right-32 shadow-2xl">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+    <div className="floating-btn hidden fixed bottom-14 right-32 shadow-2xl">
+      <button
+        onClick={scrollToTop}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+      >
         <svg
           className="w-6 h-6"
           fill="none"
