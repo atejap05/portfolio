@@ -27,7 +27,7 @@ const FrontEndSkillList = () => {
 
       scrollTrigger: {
         trigger: ".skill-front",
-        markers: true,
+        // markers: true,
         start: "top 700px",
         end: "bottom 650px",
         scrub: true,
