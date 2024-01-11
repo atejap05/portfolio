@@ -1,6 +1,3 @@
-"use client";
-
-import { useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import CustomUnderline from "@/components/ui/CustomUnderline";
 import PersonalCard from "@/components/ui/PersonalCard";
@@ -10,73 +7,12 @@ import { Crimson_Pro } from "next/font/google";
 // IMG //
 import headerImg from "../assets/imgs/header_01.jpg";
 
-// SVG //
-// Front
-import typescriptSvg from "../assets/svg/icons8-typescript.svg";
-import nextjsSvg from "../assets/svg/icons8-nextjs.svg";
-import tailwindSvg from "../assets/svg/icons8-tailwindcss.svg";
-import sassSvg from "../assets/svg/icons8-sass.svg";
-import reactSvg from "../assets/svg/icons8-react.svg";
-
-import cssSvg from "../assets/svg/icons8-css.svg";
-import htmlSvg from "../assets/svg/icons8-html.svg";
-import jsSvg from "../assets/svg/icons8-javascript.svg";
-// Back
-import nodeSvg from "../assets/svg/icons8-nodejs.svg";
-import expressSvg from "../assets/svg/icons8-express-js.svg";
-import postgresSvg from "../assets/svg/icons8-postgresql.svg";
-import mongodbSvg from "../assets/svg/icons8-mongodb.png";
-import prismaSvg from "../assets/svg/icons8-prisma-orm.svg";
-import pythonSvg from "../assets/svg/icons8-python.svg";
-
 const crimsonPro = Crimson_Pro({ subsets: ["latin"] });
 
-// Gsap
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FrontEndSkillList from "@/components/shared/SkillList/FrontEndSkillList";
+import BackendSkillList from "@/components/shared/SkillList/BackEndSkillList";
 
 export default function Home() {
-  const skillFrontRef = useRef(null);
-  const skillBackRef = useRef(null);
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to(skillFrontRef.current, {
-      x: 0,
-
-      scrollTrigger: {
-        trigger: ".skill-front",
-        markers: true,
-        start: "top 700px",
-        end: "bottom 650px",
-        scrub: true,
-      },
-    });
-
-    return () => {
-      gsap.killTweensOf(".skill-front");
-    };
-  }, []);
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to(skillBackRef.current, {
-      x: 0,
-
-      scrollTrigger: {
-        trigger: ".skill-back",
-        markers: true,
-        start: "top 700px",
-        end: "bottom 650px",
-        scrub: true,
-      },
-    });
-
-    return () => {
-      gsap.killTweensOf(".skill-back");
-    };
-  }, []);
-
   return (
     <div className="max-w-screen-xl min-h-screen py-2 px-4 m-auto">
       <section className="bg-gradient-to-t from-my-dark to-my-black shadow-md flex justify-between gap-2 px-8 pb-24 clip-path-mypolygon_b">
@@ -114,8 +50,8 @@ export default function Home() {
           </div>
           <div className="">
             <p className="mb-6">
-              <span className="animate-hand-shake inline-block">👋🏻</span> Hi,
-              I'm{" "}
+              <span className="animate-hand-shake inline-block">👋🏻</span> Hi, I
+              &apos;m{" "}
               <span className=" mx-1 text-xl font-semibold">Joel Alves,</span>
             </p>
             <h1 className={`${crimsonPro.className} text-3xl mb-4`}>
@@ -132,7 +68,7 @@ export default function Home() {
               I enjoy building solid and user-friendly web applications using my
               experience in interface design, TypeScript and React. If you need
               a communicative front-end developer who enjoys working as part of
-              a team, I’d love to hear from you!
+              a team, I &apos;d love to hear from you!
             </p>
           </div>
         </div>
@@ -165,35 +101,7 @@ export default function Home() {
               others.
             </p>
             <div className="  w-2/3">
-              <ul
-                ref={skillFrontRef}
-                className=" skill-front -translate-x-[500px] flex justify-between gap-2 [&>*]:transition-all duration-300 delay-75 [&>*:hover]:rotate-12"
-              >
-                <li>
-                  <Image src={jsSvg} alt="js" />
-                </li>
-                <li>
-                  <Image src={typescriptSvg} alt="typescript" />
-                </li>
-                <li>
-                  <Image src={nextjsSvg} alt="nextjs" />
-                </li>
-                <li>
-                  <Image src={tailwindSvg} alt="tailwind" />
-                </li>
-                <li>
-                  <Image src={sassSvg} alt="sass" />
-                </li>
-                <li>
-                  <Image src={reactSvg} alt="react" />
-                </li>
-                <li>
-                  <Image src={cssSvg} alt="css" />
-                </li>
-                <li>
-                  <Image src={htmlSvg} alt="html" />
-                </li>
-              </ul>
+              <FrontEndSkillList />
             </div>
           </div>
           <div>
@@ -204,29 +112,7 @@ export default function Home() {
               MongoDB, Prisma, among others.
             </p>
             <div className="w-2/3">
-              <ul
-                ref={skillBackRef}
-                className="skill-back translate-x-[500px] flex justify-between gap-2 [&>*]:transition-all duration-300 delay-75 [&>*:hover]:rotate-12"
-              >
-                <li>
-                  <Image src={pythonSvg} alt="js" />
-                </li>
-                <li>
-                  <Image src={nodeSvg} alt="typescript" />
-                </li>
-                <li>
-                  <Image src={expressSvg} alt="nextjs" />
-                </li>
-                <li>
-                  <Image src={postgresSvg} alt="tailwind" />
-                </li>
-                <li>
-                  <Image src={mongodbSvg} alt="sass" />
-                </li>
-                <li>
-                  <Image src={prismaSvg} alt="react" />
-                </li>
-              </ul>
+              <BackendSkillList />
             </div>
           </div>
         </div>
@@ -249,58 +135,6 @@ export default function Home() {
               quas, quos, quia voluptatem nesciunt doloremque quibusdam quod
               fugit autem.
             </p>
-            <div className="flex justify-between gap-2">
-              <div className="w-1/3">
-                <ul className="flex justify-between gap-2">
-                  <li>
-                    <Image src={jsSvg} alt="js" />
-                  </li>
-                  <li>
-                    <Image src={typescriptSvg} alt="typescript" />
-                  </li>
-                  <li>
-                    <Image src={nextjsSvg} alt="nextjs" />
-                  </li>
-                  <li>
-                    <Image src={tailwindSvg} alt="tailwind" />
-                  </li>
-                  <li>
-                    <Image src={sassSvg} alt="sass" />
-                  </li>
-                  <li>
-                    <Image src={reactSvg} alt="react" />
-                  </li>
-                  <li>
-                    <Image src={cssSvg} alt="css" />
-                  </li>
-                  <li>
-                    <Image src={htmlSvg} alt="html" />
-                  </li>
-                </ul>
-              </div>
-              <div className="w-1/3">
-                <ul className="flex justify-between gap-2">
-                  <li>
-                    <Image src={pythonSvg} alt="js" />
-                  </li>
-                  <li>
-                    <Image src={nodeSvg} alt="typescript" />
-                  </li>
-                  <li>
-                    <Image src={expressSvg} alt="nextjs" />
-                  </li>
-                  <li>
-                    <Image src={postgresSvg} alt="tailwind" />
-                  </li>
-                  <li>
-                    <Image src={mongodbSvg} alt="sass" />
-                  </li>
-                  <li>
-                    <Image src={prismaSvg} alt="react" />
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
           <div className="w-1/2">
             <h2 className="text-2xl mb-6">Project 2</h2>
@@ -315,58 +149,6 @@ export default function Home() {
               quas, quos, quia voluptatem nesciunt doloremque quibusdam quod
               fugit autem.
             </p>
-            <div className="flex justify-between gap-2">
-              <div className="w-1/3">
-                <ul className="flex justify-between gap-2">
-                  <li>
-                    <Image src={jsSvg} alt="js" />
-                  </li>
-                  <li>
-                    <Image src={typescriptSvg} alt="typescript" />
-                  </li>
-                  <li>
-                    <Image src={nextjsSvg} alt="nextjs" />
-                  </li>
-                  <li>
-                    <Image src={tailwindSvg} alt="tailwind" />
-                  </li>
-                  <li>
-                    <Image src={sassSvg} alt="sass" />
-                  </li>
-                  <li>
-                    <Image src={reactSvg} alt="react" />
-                  </li>
-                  <li>
-                    <Image src={cssSvg} alt="css" />
-                  </li>
-                  <li>
-                    <Image src={htmlSvg} alt="html" />
-                  </li>
-                </ul>
-              </div>
-              <div className="w-1/3">
-                <ul className="flex justify-between gap-2">
-                  <li>
-                    <Image src={pythonSvg} alt="js" />
-                  </li>
-                  <li>
-                    <Image src={nodeSvg} alt="typescript" />
-                  </li>
-                  <li>
-                    <Image src={expressSvg} alt="next js" />
-                  </li>
-                  <li>
-                    <Image src={postgresSvg} alt="tailwind" />
-                  </li>
-                  <li>
-                    <Image src={mongodbSvg} alt="sass" />
-                  </li>
-                  <li>
-                    <Image src={prismaSvg} alt="react" />
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -375,9 +157,9 @@ export default function Home() {
           Contact me
         </h1>
         <p className=" w-2/3 text-center text-2xl">
-          Feel free to <CustomUnderline text="contact me" /> if you're looking
-          for a communicative web developer who is passionate about creating
-          great user experiences or just want to have a chat.
+          Feel free to <CustomUnderline text="contact me" /> if you&apos;re
+          looking for a communicative web developer who is passionate about
+          creating great user experiences or just want to have a chat.
         </p>
         <PersonalCard />
       </section>
