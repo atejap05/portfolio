@@ -13,7 +13,7 @@ const Nav = () => {
 
   return (
     <>
-      <div className="flex justify-evenly mb-32">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-evenly mb-32">
         <button
           onClick={() => scrollTo("about")}
           className="group text-my-white transition duration-300 text-lg"

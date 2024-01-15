@@ -5,8 +5,8 @@ import { IoIosMail } from "react-icons/io";
 
 const PersonalCard = () => {
   return (
-    <div className=" bg-gradient-to-b from-my-black to-my-darken flex justify-evenly items-center gap-12 px-12 py-8 w-1/2 rounded-md shadow-lg">
-      <div>
+    <div className=" bg-gradient-to-b from-my-black to-my-darken flex justify-evenly items-center gap-12 px-12 py-8 rounded-md shadow-lg">
+      <div className="flex-1 hidden sm:block">
         <Image
           className="rounded-full shadow-lg border-4 border-my-lighten object-contain hover:scale-105 transform transition-all"
           src={cardImage}
@@ -15,7 +15,7 @@ const PersonalCard = () => {
           height={150}
         />
       </div>
-      <div>
+      <div className="flex-1">
         <div className="mb-6">
           <h3 className=" text-my-lighten font-semibold text-2xl">
             Joel Alves

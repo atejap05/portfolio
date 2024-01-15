@@ -37,7 +37,7 @@ export default function Home() {
               Full Stack Developer
             </h1>
             <p
-              className={`${crimsonPro.className} text-5xl leading-snug mb-10`}
+              className={`${crimsonPro.className} text-3xl sm:text-5xl leading-snug mb-10`}
             >
               Creating web applications with
               <CustomUnderline text="ReactJs" />, NextJs, TypeScript and
@@ -72,13 +72,13 @@ export default function Home() {
             About my work
           </p>
           <h1
-            className={`${crimsonPro.className}  text-5xl leading-snug mb-10`}
+            className={`${crimsonPro.className} text-3xl sm:text-5xl leading-snug mb-10`}
           >
             <span className="font-semibold">6+ years of experience</span> in
             <CustomUnderline text="web development" />, working with the most
             modern technologies on the market.
           </h1>
-          <div className="flex justify-between gap-16">
+          <div className="flex flex-col sm:flex-row justify-between gap-16">
             <div>
               <h2 className="mb-6 uppercase text-2xl">Front-end</h2>
               <p className="mb-6 leading-relaxed text-xl">
@@ -87,7 +87,7 @@ export default function Home() {
                 ReactJs, NextJs, TypeScript, Tailwind CSS, Sass, Styled
                 Components, among others.
               </p>
-              <div className="  w-2/3">
+              <div className="w-2/3">
                 <FrontEndSkillList />
               </div>
             </div>
@@ -109,11 +109,11 @@ export default function Home() {
         id="projects"
         className="bg-gradient-to-t from-my-dark to-my-black px-8 py-20 clip-path-mypolygon_y"
       >
-        <h1 className="text-4xl text-my-lighten text-center py-20">
+        <h1 className="text-3xl sm:text-4xl text-my-lighten text-center py-20">
           My Projects
         </h1>
-        <div className="flex justify-between gap-16 px-8">
-          <div className="w-1/2 ">
+        <div className="flex flex-col sm:flex-row justify-between gap-16 px-8">
+          <div className="w-full sm:w-1/2">
             <h2 className="text-2xl mb-6">Project 1</h2>
             <p className="mb-6">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
@@ -127,7 +127,7 @@ export default function Home() {
               fugit autem.
             </p>
           </div>
-          <div className="w-1/2">
+          <div className="w-full sm:w-1/2">
             <h2 className="text-2xl mb-6">Project 2</h2>
             <p className="mb-6">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
@@ -147,10 +147,10 @@ export default function Home() {
         id="contact"
         className="bg-gradient-to-t from-my-black to-my-dark flex flex-col justify-center items-center gap-16 px-8 py-20 mb-10 clip-path-mypolygon_t"
       >
-        <h1 className="text-4xl text-my-lighten text-center uppercase py-12">
+        <h1 className="text-2xl sm:text-4xl text-my-lighten text-center uppercase py-12">
           Contact me
         </h1>
-        <p className=" w-2/3 text-center text-2xl">
+        <p className=" w-2/3 text-center text-xl sm:text-2xl">
           Feel free to <CustomUnderline text="contact me" /> if you&apos;re
           looking for a communicative web developer who is passionate about
           creating great user experiences or just want to have a chat.
